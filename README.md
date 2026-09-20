@@ -3,7 +3,7 @@
 Welcome to my portfolio!
 
 🌐 **Visit my portfolio:**
-**[](https://sushanthnprabhu-netizen.github.io/portfolio/)]**
+**[(https://sushanthnprabhu-netizen.github.io/portfolio/)]**
 
 ---
 
