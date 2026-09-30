@@ -1,136 +1,261 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sushanth N Prabhu | Portfolio</title>
+    <title>Sushanth N Prabhu | Software Developer</title>
+    <meta name="description" content="Portfolio of Sushanth N Prabhu, a software developer and first-year Chemical Engineering student at IIT Kanpur. Projects in reinforcement learning, neural networks and game development.">
+    <meta name="theme-color" content="#f7f8fa">
+    <meta property="og:title" content="Sushanth N Prabhu | Software Developer">
+    <meta property="og:description" content="Software developer and first-year student at IIT Kanpur. Projects in AI and game development.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Ctext x='32' y='43' font-family='Arial' font-size='30' font-weight='700' text-anchor='middle' fill='white'%3ESP%3C/text%3E%3C/svg%3E">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <header>
-        <nav>
-            <h2 class="logo">Sushanth</h2>
+    <header class="site-header">
+        <nav class="nav container" aria-label="Primary">
+            <a href="#home" class="brand">Sushanth N Prabhu</a>
 
-            <ul>
-                <li><a href="#home">Home</a></li>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+                <span></span><span></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-text">
-            <h1>Hello, I'm</h1>
+    <main id="main">
+        <!-- Hero -->
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <h1>Sushanth N Prabhu</h1>
+                    <p class="hero-role">Software developer and first-year engineering student at IIT Kanpur.</p>
+                    <p class="hero-summary">
+                        I build software and games, and I'm learning how modern AI systems
+                        work by implementing them from scratch.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">View projects</a>
+                        <a href="#contact" class="btn btn-secondary">Get in touch</a>
+                    </div>
+                    <ul class="social" aria-label="Profiles">
+                        <li>
+                            <a href="https://github.com/sushanthnprabhu-netizen" target="_blank" rel="noopener" aria-label="GitHub">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/sushanth-n-prabhu-491a0b259/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:sushanthnprabhu@gmail.com" aria-label="Email">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.6 2 7.4 5.3L19.4 7H4.6ZM20 8.9l-7.42 5.3a1 1 0 0 1-1.16 0L4 8.9V17h16V8.9Z"/></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-            <h2>Sushanth N Prabhu</h2>
+                <aside class="profile" aria-label="At a glance">
+                    <div class="avatar" aria-hidden="true">SP</div>
+                    <dl>
+                        <div>
+                            <dt>Studying</dt>
+                            <dd>B.E. Chemical Engineering, IIT Kanpur</dd>
+                        </div>
+                        <div>
+                            <dt>Interned at</dt>
+                            <dd>ANI Living Spaces, Software Developer</dd>
+                        </div>
+                        <div>
+                            <dt>Leading</dt>
+                            <dd>Game Development Club and Outreach Cell, IIT Kanpur</dd>
+                        </div>
+                    </dl>
+                </aside>
+            </div>
+        </section>
 
-            <p>
-                First Year Undergraduate at IIT Kanpur
-                <br>
-                Software Developer Intern @ ANI Living Spaces |
-                Secretary @ Game Development Club IITK
-            </p>
+        <!-- About -->
+        <section id="about" class="section">
+            <div class="container section-grid">
+                <h2>About</h2>
+                <div class="section-body prose">
+                    <p>
+                        I'm pursuing a Bachelor of Engineering in Chemical Engineering at
+                        IIT Kanpur, and I spend much of my time on software. I interned as a
+                        software developer at ANI Living Spaces and I'm comfortable working
+                        with Docker, PostgreSQL and JavaScript.
+                    </p>
+                    <p>
+                        Game development is what I enjoy most. I serve as Secretary of the
+                        Game Development Club and the Outreach Cell, where I work on
+                        collaboration and creativity within the community. I also volunteer
+                        to teach spoken English to young students, and I've received several
+                        academic recognitions along the way.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-            <a href="#projects" class="btn">View My Work</a>
+        <!-- Experience -->
+        <section id="experience" class="section">
+            <div class="container section-grid">
+                <h2>Experience</h2>
+                <ul class="section-body timeline">
+                    <li>
+                        <h3>Software Developer Intern</h3>
+                        <p class="org">ANI Living Spaces</p>
+                        <p>Software development internship.</p>
+                    </li>
+                    <li>
+                        <h3>Secretary</h3>
+                        <p class="org">Game Development Club, IIT Kanpur</p>
+                        <p>Contributing to the club and encouraging collaboration and creativity among members.</p>
+                    </li>
+                    <li>
+                        <h3>Secretary</h3>
+                        <p class="org">Outreach Cell, IIT Kanpur</p>
+                        <p>Contributing to the cell's work and to the wider campus community.</p>
+                    </li>
+                    <li>
+                        <h3>Volunteer Teacher</h3>
+                        <p class="org">Spoken English</p>
+                        <p>Teaching spoken English to young students.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="section">
+            <div class="container section-grid">
+                <h2>Skills</h2>
+                <div class="section-body skills">
+                    <div class="skill-group">
+                        <h3>Languages</h3>
+                        <ul class="chips">
+                            <li>Python</li>
+                            <li>C++</li>
+                            <li>JavaScript</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Frameworks and engines</h3>
+                        <ul class="chips">
+                            <li>React Native</li>
+                            <li>Unity</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Tools and infrastructure</h3>
+                        <ul class="chips">
+                            <li>Docker</li>
+                            <li>PostgreSQL</li>
+                            <li>Git and GitHub</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <div class="container section-grid">
+                <h2>Projects</h2>
+                <div class="section-body projects">
+                    <article class="project">
+                        <h3>Arena Mind: Self-Play AI Fighting Arena</h3>
+                        <p>
+                            A reinforcement learning system where agents learn combat
+                            strategy through self-play in a Street Fighter-inspired
+                            environment. Includes multi-agent training, reward engineering,
+                            behavior evaluation pipelines and gameplay data analysis.
+                        </p>
+                        <ul class="chips chips-small">
+                            <li>Reinforcement learning</li>
+                            <li>Multi-agent</li>
+                            <li>Self-play</li>
+                        </ul>
+                        <a class="project-link" href="https://github.com/sushanthnprabhu-netizen" target="_blank" rel="noopener">
+                            View on GitHub
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2l-4.6-4.6L14 6l7 7-7 7-1.4-1.4 4.6-4.6H5v-2Z"/></svg>
+                        </a>
+                    </article>
+
+                    <article class="project">
+                        <h3>Numbers to Neurons</h3>
+                        <p>
+                            Neural networks built from scratch with Python and NumPy:
+                            forward propagation, backpropagation, activation functions,
+                            gradient descent and model training, evaluated with loss curves.
+                            Also covers CNNs, embeddings and transformers.
+                        </p>
+                        <ul class="chips chips-small">
+                            <li>Python</li>
+                            <li>NumPy</li>
+                            <li>Neural networks</li>
+                        </ul>
+                        <a class="project-link" href="https://github.com/sushanthnprabhu-netizen" target="_blank" rel="noopener">
+                            View on GitHub
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2l-4.6-4.6L14 6l7 7-7 7-1.4-1.4 4.6-4.6H5v-2Z"/></svg>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section">
+            <div class="container section-grid">
+                <h2>Contact</h2>
+                <div class="section-body">
+                    <p class="contact-lead">
+                        Have a question or want to work together? Email is the best way to reach me.
+                    </p>
+                    <ul class="contact-list">
+                        <li>
+                            <span class="contact-label">Email</span>
+                            <a href="mailto:sushanthnprabhu@gmail.com">sushanthnprabhu@gmail.com</a>
+                        </li>
+                        <li>
+                            <span class="contact-label">GitHub</span>
+                            <a href="https://github.com/sushanthnprabhu-netizen" target="_blank" rel="noopener">github.com/sushanthnprabhu-netizen</a>
+                        </li>
+                        <li>
+                            <span class="contact-label">LinkedIn</span>
+                            <a href="https://www.linkedin.com/in/sushanth-n-prabhu-491a0b259/" target="_blank" rel="noopener">linkedin.com/in/sushanth-n-prabhu</a>
+                        </li>
+                    </ul>
+                    <a href="mailto:sushanthnprabhu@gmail.com" class="btn btn-primary">Send an email</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="year">2026</span> Sushanth N Prabhu. All rights reserved.</p>
+            <a href="#home">Back to top</a>
         </div>
-    </section>
-
-    <section id="about">
-        <h2>About Me</h2>
-
-        <p>
-            Currently pursuing a Bachelor of Engineering in Chemical Engineering
-            at IIT Kanpur, with hands-on experience as a Software Engineer Intern
-            at ANI Living Spaces. Actively contributing as a Secretary at IIT
-            Kanpur's Outreach Cell and Game Development Club, fostering
-            collaboration and creativity. Proficient in Docker, PostgreSQL, and
-            JavaScript, with a passion for game development and technology.
-            Demonstrated leadership in academic and extracurricular activities,
-            including volunteering to teach spoken English to young students.
-            Recognized with multiple academic accolades, showcasing a commitment
-            to excellence and innovation.
-        </p>
-    </section>
-
-    <section id="skills">
-        <h2>Skills</h2>
-
-        <div class="cards">
-            <div class="card">HTML</div>
-            <div class="card">CSS</div>
-            <div class="card">Python</div>
-            <div class="card">C++</div>
-            <div class="card">React Native</div>
-            <div class="card">Unity</div>
-            <div class="card">Docker</div>
-            <div class="card">PostgreSQL</div>
-            <div class="card">JavaScript</div>
-            <div class="card">Git & GitHub</div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-
-        <div class="project">
-            <h3>>Arena Mind: Self-Play AI Fighting Arena</h3>
-
-            <p>
-                Developed a reinforcement learning-based competitive AI system where
-            agents learned combat strategies through self-play in a Street
-            Fighter-inspired environment. Implemented multi-agent training,
-            reward engineering, and behavior evaluation pipelines while exploring
-            reinforcement learning concepts and gameplay data analysis.
-        </div>
-
-        <div class="project">
-            <h3>Numbers to Neurons</h3>
-
-            <p>
-                Implemented neural networks from scratch using Python and NumPy,
-            covering forward propagation, backpropagation, activation functions,
-            gradient descent, and model training. Evaluated model performance
-            using loss curves while gaining a strong understanding of modern AI
-            concepts including CNNs, embeddings, and transformers.
-            </p>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-
-        <p>
-            📧 Email:
-            <a href="mailto:sushanthnprabhu@gmail.com">
-                sushanthnprabhu@gmail.com
-            </a>
-        </p>
-
-        <p>
-            💻 GitHub:
-            <a href="https://github.com/sushanthnprabhu-netizen" target="_blank">
-                https://github.com/sushanthnprabhu-netizen
-            </a>
-        </p>
-
-        <p>
-            🔗 LinkedIn:
-            <a href="https://www.linkedin.com/in/sushanth-n-prabhu-491a0b259/" target="_blank">
-                https://www.linkedin.com/in/sushanth-n-prabhu-491a0b259/
-            </a>
-        </p>
-    </section>
-
-    <footer>
-        <p>© 2026 Sushanth N Prabhu. All Rights Reserved.</p>
     </footer>
-
 </body>
 </html>
-```
