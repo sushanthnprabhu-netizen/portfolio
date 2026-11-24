@@ -1,135 +1,100 @@
 (function () {
-  // 1. Scroll progress bar & active section spy
-  const progressBar = document.getElementById("scrollProgress");
-  const navLinks = Array.from(document.querySelectorAll(".nav-link"));
-  const sections = Array.from(document.querySelectorAll(".section-block"));
+  const progressBar = document.getElementById("progressBar");
+  const links = Array.from(document.querySelectorAll(".side-link"));
+  const blocks = Array.from(document.querySelectorAll(".block"));
 
-  function updateScrollState() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
+  function onScroll() {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
     if (progressBar) {
-      progressBar.style.width = `${pct}%`;
+      progressBar.style.width = `${Math.min(100, Math.max(0, ratio))}%`;
     }
 
-    let currentId = sections[0]?.id;
-    for (const sec of sections) {
-      const top = sec.getBoundingClientRect().top;
-      if (top <= 160) {
-        currentId = sec.id;
+    let activeId = blocks[0]?.id;
+    for (const b of blocks) {
+      if (b.getBoundingClientRect().top <= 170) {
+        activeId = b.id;
       }
     }
-
-    navLinks.forEach((link) => {
-      link.classList.toggle("active", link.dataset.section === currentId);
-    });
+    links.forEach((l) => l.classList.toggle("active", l.dataset.target === activeId));
   }
 
-  window.addEventListener("scroll", updateScrollState, { passive: true });
-  updateScrollState();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-  // 2. Project category filtering
-  const filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
-  const projectRows = Array.from(document.querySelectorAll(".project-row"));
+  const filterBtns = Array.from(document.querySelectorAll(".f-btn"));
+  const projCards = Array.from(document.querySelectorAll(".proj-card"));
 
-  filterButtons.forEach((btn) => {
+  filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const filter = btn.dataset.filter;
-      filterButtons.forEach((b) => b.classList.toggle("active", b === btn));
-
-      projectRows.forEach((row) => {
-        const tags = (row.dataset.tags || "").split(/\s+/);
-        const show = filter === "all" || tags.includes(filter);
-        row.classList.toggle("hidden", !show);
+      const tag = btn.dataset.filter;
+      filterBtns.forEach((b) => b.classList.toggle("active", b === btn));
+      projCards.forEach((card) => {
+        const tags = (card.dataset.tags || "").split(/\s+/);
+        card.classList.toggle("hidden", tag !== "all" && !tags.includes(tag));
       });
     });
   });
 
-  // 3. Interactive WLC Accommodation Allocation Playground (50:30:20 default)
-  const wDistInput = document.getElementById("wDist");
-  const wDispInput = document.getElementById("wDisp");
-  const wCapInput = document.getElementById("wCap");
-  const wDistVal = document.getElementById("wDistVal");
-  const wDispVal = document.getElementById("wDispVal");
-  const wCapVal = document.getElementById("wCapVal");
-  const resetBtn = document.getElementById("resetWeightsBtn");
-  const resultsContainer = document.getElementById("allocationResults");
+  const sDist = document.getElementById("sDist");
+  const sDisp = document.getElementById("sDisp");
+  const sCap = document.getElementById("sCap");
+  const vDist = document.getElementById("vDist");
+  const vDisp = document.getElementById("vDisp");
+  const vCap = document.getElementById("vCap");
+  const resetBtn = document.getElementById("resetBtn");
+  const rankList = document.getElementById("rankList");
 
-  // Illustrative normalized candidate scores (0..100 scale, higher = better)
-  const candidates = [
-    {
-      name: "Cluster A — Multi-Property Pair (Koramangala + HSR)",
-      dist: 91,
-      disp: 84,
-      cap: 78
-    },
-    {
-      name: "Cluster B — Single Flagship Property (Indiranagar)",
-      dist: 85,
-      disp: 62,
-      cap: 92
-    },
-    {
-      name: "Cluster C — Distributed 3-Unit Split",
-      dist: 76,
-      disp: 94,
-      cap: 74
-    }
+  const options = [
+    { label: "Multi-Unit Cluster A", d: 91, p: 84, c: 78 },
+    { label: "Single Property B", d: 85, p: 62, c: 92 },
+    { label: "Split Allocation C", d: 76, p: 94, c: 74 }
   ];
 
-  function renderAllocations() {
-    if (!wDistInput || !wDispInput || !wCapInput || !resultsContainer) return;
+  function updateWLC() {
+    if (!sDist || !sDisp || !sCap || !rankList) return;
+    const dRaw = Number(sDist.value);
+    const pRaw = Number(sDisp.value);
+    const cRaw = Number(sCap.value);
+    const total = dRaw + pRaw + cRaw || 1;
 
-    const rawD = Number(wDistInput.value);
-    const rawP = Number(wDispInput.value);
-    const rawC = Number(wCapInput.value);
-    const sum = rawD + rawP + rawC || 1;
+    const wd = dRaw / total;
+    const wp = pRaw / total;
+    const wc = cRaw / total;
 
-    const normD = rawD / sum;
-    const normP = rawP / sum;
-    const normC = rawC / sum;
+    vDist.textContent = `${Math.round(wd * 100)}%`;
+    vDisp.textContent = `${Math.round(wp * 100)}%`;
+    vCap.textContent = `${Math.round(wc * 100)}%`;
 
-    wDistVal.textContent = `${Math.round(normD * 100)}%`;
-    wDispVal.textContent = `${Math.round(normP * 100)}%`;
-    wCapVal.textContent = `${Math.round(normC * 100)}%`;
+    const ranked = options
+      .map((o) => ({ ...o, score: wd * o.d + wp * o.p + wc * o.c }))
+      .sort((a, b) => b.score - a.score);
 
-    const ranked = candidates
-      .map((c) => {
-        const wlc = normD * c.dist + normP * c.disp + normC * c.cap;
-        return { ...c, wlc };
-      })
-      .sort((a, b) => b.wlc - a.wlc);
-
-    resultsContainer.innerHTML = ranked
+    rankList.innerHTML = ranked
       .map(
-        (item, idx) => `
-        <div class="alloc-card">
-          <div class="alloc-top">
-            <span><strong>#${idx + 1}</strong> ${item.name}</span>
-            <span class="alloc-score">WLC ${item.wlc.toFixed(1)}</span>
+        (item, i) => `
+        <div class="rank-item">
+          <div class="rank-row">
+            <span><strong>#${i + 1}</strong> ${item.label}</span>
+            <span class="rank-val">${item.score.toFixed(1)}</span>
           </div>
-          <div class="alloc-bar-track">
-            <div class="alloc-bar-fill" style="width: ${Math.min(100, item.wlc)}%"></div>
+          <div class="bar-bg">
+            <div class="bar-fill" style="width:${Math.min(100, item.score)}%"></div>
           </div>
-          <div class="alloc-detail">
-            Dist: ${item.dist} • Dispersion: ${item.disp} • Capacity-Fit: ${item.cap}
-          </div>
+          <div class="rank-sub">D:${item.d} · P:${item.p} · C:${item.c}</div>
         </div>
       `
       )
       .join("");
   }
 
-  [wDistInput, wDispInput, wCapInput].forEach((input) => {
-    input?.addEventListener("input", renderAllocations);
-  });
-
+  [sDist, sDisp, sCap].forEach((el) => el?.addEventListener("input", updateWLC));
   resetBtn?.addEventListener("click", () => {
-    wDistInput.value = "50";
-    wDispInput.value = "30";
-    wCapInput.value = "20";
-    renderAllocations();
+    sDist.value = "50";
+    sDisp.value = "30";
+    sCap.value = "20";
+    updateWLC();
   });
 
-  renderAllocations();
+  updateWLC();
 })();
